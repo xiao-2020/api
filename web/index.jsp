@@ -8,9 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>api文档</title>
   </head>
   <body>
-  $END$
+    <h1>api</h1>
+    <a href="api">api test</a>
   </body>
 </html>
