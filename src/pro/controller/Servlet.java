@@ -4,13 +4,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.io.PrintWriter;
 import java.lang.Class;
-import util.Test;
+import java.util.Enumeration;
+
 import util.DealString;
 import util.ActionsClassInterface;
 public class Servlet extends HttpServlet {
@@ -33,17 +32,20 @@ public class Servlet extends HttpServlet {
   
   }
   // 入口方法
-  public void enterRequest(HttpServletRequest request, HttpServletResponse response) {
+  public void enterRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // 获取请求地址
     String uri = request.getRequestURI();
+  
     /**
      * 抽离具体的url  根据 url 找到对应的不同的类类型
      *
      */
+    System.out.println(uri);
+    System.out.println(request.getParameter("a"));
     String action = uri.substring(5);
     // 处理成首字母大写
     String actions = DealString.CapitalInitials(action); // Test
-    System.out.println(actions);
+    System.out.println("跳转类名：" + actions);
     try {
       // 获取包下的类
       Class _class = Class.forName(String.format("pro.actions.shop.%s", actions));
@@ -54,9 +56,10 @@ public class Servlet extends HttpServlet {
     } catch (Exception e) {
       e.printStackTrace();
     }
-  }
+    response.setContentType("text/html;charset=utf-8");
+    PrintWriter out = response.getWriter();
+    out.println("aaa");
   
-  public void enterPostRequest(HttpServletRequest request, HttpServletResponse response) {
-  
   }
+
 }
