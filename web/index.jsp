@@ -12,6 +12,6 @@
   </head>
   <body>
     <h1>api</h1>
-    <a href="api">api test</a>
+    <a href="/api/shop">api test</a>
   </body>
 </html>
