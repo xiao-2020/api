@@ -1,6 +1,6 @@
 package pro.controller;
 
-import util.ActionsClassInterface;
+import pro.actions.shop.ActionsClassInterface;
 import util.DealString;
 
 import javax.servlet.ServletException;
@@ -45,7 +45,7 @@ public class Servlet extends HttpServlet {
         System.out.println(uri);
         String action = uri.substring(5);
         // 处理成首字母大写
-        String actions = DealString.CapitalInitials(action); // Test
+        String actions = DealString.CapitalInitials(action);
         System.out.println("跳转类名：" + actions);
         try {
             // 获取包下的类

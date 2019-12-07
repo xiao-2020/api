@@ -1,4 +1,4 @@
-package util;
+package pro.actions.shop;
 
 import javax.servlet.http.HttpServletRequest;
 
