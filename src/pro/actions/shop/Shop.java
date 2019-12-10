@@ -1,10 +1,10 @@
 package pro.actions.shop;
 
-import javax.servlet.http.HttpServletRequest;
+import pro.controller.Request;
 
 
 public class Shop implements ActionsClassInterface {
-  public void doAction(HttpServletRequest request) {
+  public void doAction( Request request ) {
   
   }
   

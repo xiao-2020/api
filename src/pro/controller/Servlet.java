@@ -21,32 +21,20 @@ public class Servlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        filter();
-        enterRequest(request, response);
+    protected void doPost( HttpServletRequest req, HttpServletResponse res ) throws ServletException, IOException {
+        // 处理请求对象
+        Request _request = new Request(req);
+        // 拦截器
+//        new Filter(request);
+        // entry
+        enterRequest(_request, res);
     }
-
-    // 拦截器
-    public void filter() {
-
-    }
-
-
+    
+    
     // 入口方法
-    public void enterRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        request.setCharacterEncoding("utf-8");
+    public void enterRequest( Request request, HttpServletResponse response ) throws IOException {
         response.setCharacterEncoding("utf-8");
-        // 获取请求地址
-        String uri = request.getRequestURI();
-        /**
-         * 抽离具体的url  根据 url 找到对应的不同的类类型
-         *
-         */
-        System.out.println(uri);
-        String action = uri.substring(5);
-        // 处理成首字母大写
-        String actions = DealString.CapitalInitials(action);
-        System.out.println("跳转类名：" + actions);
+        String actions = request.getActionName();
         try {
             // 获取包下的类
             Class actionClass = Class.forName(String.format("pro.actions.shop.%s", actions));
@@ -55,7 +43,7 @@ public class Servlet extends HttpServlet {
             // 调用动态类的入口方法
             newInstance.doAction(request);
         } catch (Exception e) {
-            throw new RuntimeException("动态获取类失败：" + action, e);
+            throw new RuntimeException("动态获取类失败：" + actions, e);
         }
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
