@@ -31,13 +31,13 @@ public class Request {
   }
   
   private void dealUrl( String url ) {
-    String validUrl = url.replaceAll("/api/|\\.*", "");
+    String validUrl = url.replaceAll("/api/|\\.htm", "");
     String[] urlArr = validUrl.split("/", 2);
     // 存入 url 对应的 行为类名 和 子方法名
     System.out.println(urlArr[0]);
     System.out.println(urlArr[1]);
     this.setActionName(DealString.CapitalInitials(urlArr[0]));
-    this.setSubActionName(DealString.CapitalInitials(urlArr[1]));
+    this.setSubActionName(urlArr[1]);
   }
   
   public String getActionName() {

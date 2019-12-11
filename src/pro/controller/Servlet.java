@@ -25,7 +25,7 @@ public class Servlet extends HttpServlet {
         // 处理请求对象
         Request Request = new Request(request);
         // 拦截器
-//        new Filter(request);
+        new Filter(request);
         // entry
         enterRequest(Request, response);
     }

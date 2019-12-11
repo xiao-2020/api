@@ -4,15 +4,18 @@ import pro.controller.Request;
 
 
 public class Shop implements ActionsClassInterface {
-  public void doAction( Request request ) {
   
+  @Override
+  public void doAction( Request request ) {
+    String methodName = request.getSubActionName();
+    ActionsClassInterface.callMethod(Shop.class, methodName);
   }
   
   public void add() {
-  
+    System.out.println("Shop Add");
   }
   
-  public void read() {
-  
+  public void update() {
+    System.out.println("Shop Update");
   }
 }

@@ -12,8 +12,8 @@
   </head>
   <body>
     <h1>api</h1>
-    <a href="/api/user">api test</a>
-    <a href="/api/shop">api login</a>
+    <a href="/api/user/login">api user</a>
+    <a href="/api/shop/add">api shop</a>
 
   </body>
 </html>
