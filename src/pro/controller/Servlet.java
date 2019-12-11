@@ -21,13 +21,13 @@ public class Servlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost( HttpServletRequest req, HttpServletResponse res ) throws ServletException, IOException {
+    protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         // 处理请求对象
-        Request _request = new Request(req);
+        Request Request = new Request(request);
         // 拦截器
 //        new Filter(request);
         // entry
-        enterRequest(_request, res);
+        enterRequest(Request, response);
     }
     
     
