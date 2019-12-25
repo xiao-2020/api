@@ -11,43 +11,45 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Servlet extends HttpServlet {
-
-    public Servlet() {
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
-    }
-
-    @Override
-    protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-        // 处理请求对象
-        Request Request = new Request(request);
-        // 拦截器
-        new Filter(request);
-        // entry
-        enterRequest(Request, response);
-    }
+  @Override
+  protected void service( HttpServletRequest req, HttpServletResponse resp ) throws ServletException, IOException {
+    super.service(req, resp);
+  }
+  
+  
+  @Override
+  protected void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+    System.out.println("doGet");
+    doPost(request, response);
+  }
+  
+  @Override
+  protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+    System.out.println("doPost");
     
-    
-    // 入口方法
-    public void enterRequest( Request request, HttpServletResponse response ) throws IOException {
-        response.setCharacterEncoding("utf-8");
-        String actions = request.getActionName();
-        try {
-            // 获取包下的类
-            Class actionClass = Class.forName(String.format("pro.actions.shop.%s", actions));
-            // 实例动态类
-            ActionsClassInterface newInstance = (ActionsClassInterface) actionClass.getDeclaredConstructor().newInstance();
-            // 调用动态类的入口方法
-            newInstance.doAction(request);
-        } catch (Exception e) {
-            throw new RuntimeException("动态获取类失败：" + actions, e);
-        }
-        response.setContentType("text/html;charset=utf-8");
-        PrintWriter out = response.getWriter();
-        out.println("aaa");
+    // 处理请求对象
+    Request Request = new Request(request);
+    // entry
+    enterRequest(Request, response);
+  }
+  
+  // 入口方法
+  public void enterRequest( Request request, HttpServletResponse response ) throws IOException {
+    response.setCharacterEncoding("utf-8");
+    String actions = request.getActionName();
+    try {
+      // 获取包下的类
+      Class actionClass = Class.forName(String.format("pro.actions.shop.%s", actions));
+      // 实例动态类
+      ActionsClassInterface newInstance = (ActionsClassInterface) actionClass.getDeclaredConstructor().newInstance();
+      // 调用动态类的入口方法
+      newInstance.doAction(request);
+    } catch (Exception e) {
+      throw new RuntimeException("动态获取类失败：" + actions, e);
     }
-
+//    response.setContentType("text/html;charset=utf-8");
+//    PrintWriter out = response.getWriter();
+//    out.println("aaa");
+  }
+  
 }

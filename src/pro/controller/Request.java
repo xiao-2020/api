@@ -1,10 +1,18 @@
 package pro.controller;
 
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 
 import util.DealString;
 
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Collection;
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Request {
   
@@ -21,6 +29,7 @@ public class Request {
     } catch (UnsupportedEncodingException e) {
       e.printStackTrace();
     }
+  
     // 1、 处理url
     String url = request.getRequestURI();
     System.out.println(url);
@@ -28,14 +37,24 @@ public class Request {
     // 2、 处理session
     
     // 3、 处理请求体  处理json
+  
+    Map<String, String[]> map = request.getParameterMap();
+    for (String key : map.keySet()) {
+      System.out.println("key:" + key);
+      System.out.println("values:" + map.get(key));
+    }
+    String data = request.getParameter("data");
+    System.out.println(data);
+ 
+  
+
+  
   }
   
   private void dealUrl( String url ) {
     String validUrl = url.replaceAll("/api/|\\.htm", "");
     String[] urlArr = validUrl.split("/", 2);
     // 存入 url 对应的 行为类名 和 子方法名
-    System.out.println(urlArr[0]);
-    System.out.println(urlArr[1]);
     this.setActionName(DealString.CapitalInitials(urlArr[0]));
     this.setSubActionName(urlArr[1]);
   }
