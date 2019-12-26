@@ -1732,17 +1732,17 @@
   </script>
   <script>
 
-    axios.post('/api/user/login.htm', {
-      params: {
-        ID: 12345
-      }
-    })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    // axios.post('/api/user/login.htm', {
+    //   params: {
+    //     ID: 12345
+    //   }
+    // })
+    //   .then(function (response) {
+    //     console.log(response);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
 
   </script>
 </html>
