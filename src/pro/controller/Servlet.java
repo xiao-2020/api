@@ -11,10 +11,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Servlet extends HttpServlet {
-  @Override
-  protected void service( HttpServletRequest req, HttpServletResponse resp ) throws ServletException, IOException {
-    super.service(req, resp);
-  }
   
   
   @Override
