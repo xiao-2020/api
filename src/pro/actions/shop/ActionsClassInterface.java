@@ -6,9 +6,9 @@ import pro.controller.Request;
 import java.lang.reflect.Method;
 
 public interface ActionsClassInterface {
-  public void doAction( Request request );
+  void doAction( Request request );
   
-  public static void callMethod( Class cls, String methodName ) {
+  static void callMethod( Class cls, String methodName ) {
     try {
       Method method = cls.getMethod(methodName);
       Object instance = cls.getDeclaredConstructor().newInstance();
@@ -16,5 +16,5 @@ public interface ActionsClassInterface {
     } catch (Exception e) {
       e.printStackTrace();
     }
-  };
+  }
 }

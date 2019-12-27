@@ -20,7 +20,7 @@ com/mysql/cj/jdbc/integration/jboss
 com/mysql/cj/jdbc/interceptors
 com/mysql/cj/jdbc/jmx
 com/mysql/cj/jdbc/result
-com/mysql/cj/jdbc/util
+com/mysql/cj/jdbc/pro.util
 com/mysql/cj/log
 com/mysql/cj/protocol
 com/mysql/cj/protocol/a
@@ -29,7 +29,7 @@ com/mysql/cj/protocol/a/result
 com/mysql/cj/protocol/result
 com/mysql/cj/protocol/x
 com/mysql/cj/result
-com/mysql/cj/util
+com/mysql/cj/pro.util
 com/mysql/cj/x
 com/mysql/cj/x/protobuf
 com/mysql/cj/xdevapi
