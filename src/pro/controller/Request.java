@@ -1,15 +1,11 @@
 package pro.controller;
 
-import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 
-import util.DealString;
+import com.alibaba.fastjson.JSONObject;
+import pro.util.DealString;
 
 import java.io.*;
-import java.util.Collection;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.Map;
 
 public class Request {
 
@@ -52,8 +48,11 @@ public class Request {
       e.printStackTrace();
     }
 
-
-    System.out.println(sb.toString());
+//    Object obj = JSON.parse(sb.toString());
+    JSONObject obj = JSONObject.parseObject(sb.toString());
+    JSONObject obj1 = obj.getJSONObject("data");
+    System.out.println(obj1);
+    
   }
 
   private void dealUrl(String url) {

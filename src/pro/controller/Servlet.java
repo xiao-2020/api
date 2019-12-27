@@ -1,7 +1,6 @@
 package pro.controller;
 
 import pro.actions.shop.ActionsClassInterface;
-import util.DealString;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -43,9 +42,9 @@ public class Servlet extends HttpServlet {
     } catch (Exception e) {
       throw new RuntimeException("动态获取类失败：" + actions, e);
     }
-//    response.setContentType("text/html;charset=utf-8");
-//    PrintWriter out = response.getWriter();
-//    out.println("aaa");
+    response.setContentType("application/json;charset=UTF-8");
+    PrintWriter out = response.getWriter();
+    out.println("{a: 2}");
   }
   
 }

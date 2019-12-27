@@ -1,4 +1,4 @@
-package util;
+package pro.util;
 
 public class DealString {
   public static String CapitalInitials(String string) {
